@@ -8,6 +8,7 @@ export default new Vuex.Store({
     moviesList: null,
     myMoviesList: [],
     page: 1,
+    totalPages: null,
   },
 
   mutations: {
@@ -22,6 +23,10 @@ export default new Vuex.Store({
     SET_PAGE(state, payload) {
       state.page = payload;
     },
+
+    SET_TOTAL_PAGES(state, payload) {
+      state.totalPages = payload;
+    },
   },
 
   actions: {
@@ -35,6 +40,10 @@ export default new Vuex.Store({
 
     setPage({ commit }, payload) {
       commit('SET_PAGE', payload);
+    },
+
+    setTotalPages({ commit }, payload) {
+      commit('SET_TOTAL_PAGES', payload);
     },
   },
 });

@@ -1,36 +1,73 @@
 <template>
   <div class="paginator">
-    <a v-if="previous" :href="previousPage">Previous Page</a>
-    <span class="current-page">{{ page }}</span>
-    <a v-if="next" :href="nextPage">Next Page</a>
+    <router-link
+      class="prev"
+      :to="previous"
+      :class="{off: current === 1}"
+    >previous</router-link>
+
+    <ul class="selectable-pages">
+      <li
+        v-for="(page, index) in selectablePages"
+        :key="index"
+        class="pg-item"
+        :class="{active: current === page}"
+      >
+        <router-link :to="linkPage(page)">
+          {{ page }}
+        </router-link>
+      </li>
+    </ul>
+
+    <router-link
+      class="next"
+      :to="next"
+      :class="{off: current === total}"
+    >next</router-link>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 
 export default {
   name: 'Paginator',
 
-  props: ['next', 'previous'],
+  props: {
+    total: {
+      type: Number,
+      required: true,
+    },
+    current: {
+      type: Number,
+      required: true,
+    },
+  },
 
   computed: {
-    ...mapState(['page']),
+    selectablePages() {
+      const pages = [];
+      for (let i = 1; i <= this.total; i++) pages.push(i);
 
-    nextPage() {
-      if (this.next) {
-        const url = this.next.split('');
-        return `/${url[url.length - 1]}`;
-      }
-      return null;
+      if (this.current === 1) return pages.slice(0, 3);
+
+      return pages.slice(this.current - 2, this.current + 1);
     },
 
-    previousPage() {
-      if (this.previous) {
-        const url = this.previous.split('');
-        return `/${url[url.length - 1]}`;
+    next() {
+      if (this.current === this.total) {
+        return { query: { ...this.$route.query } };
       }
-      return null;
+      const pagina = this.current + 1;
+      return { query: { ...this.$route.query, page: pagina } };
+    },
+
+    previous() {
+      if (this.current === 1) {
+        return { query: { ...this.$route.query } };
+      }
+      const pagina = this.current - 1;
+      return { query: { ...this.$route.query, page: pagina } };
     },
   },
 
@@ -38,6 +75,10 @@ export default {
     ...mapActions([
       'setPage',
     ]),
+
+    linkPage(page) {
+      return { query: { ...this.$route.query, page } };
+    },
   },
 
   created() {
@@ -46,24 +87,4 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .paginator {
-    a {
-      border-radius: 19px;
-      border: 1px solid;
-      color: $white;
-      font-size: 14px;
-      padding: 5px;
-      text-decoration: none;
-      transition: .2s;
-      &:hover {
-        background-color: $black;
-      }
-    }
-
-    .current-page {
-      color: $yellow;
-      font-weight: 600;
-      margin: 0 15px;
-    }
-  }
 </style>

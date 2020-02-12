@@ -1,6 +1,8 @@
 <template>
   <div class="home">
-    <h1>vue movie</h1>
+    <h1>vue movies</h1>
+
+    <Paginator :total="totalPages" :current="page" />
 
     <ul>
       <li v-for="(movie, index) in moviesList" :key="index">
@@ -32,19 +34,29 @@ export default {
   },
 
   computed: {
-    ...mapState(['moviesList']),
+    ...mapState(['moviesList', 'page', 'totalPages']),
   },
 
   methods: {
     ...mapActions([
       'setMoviesList',
       'setPage',
+      'setTotalPages',
     ]),
   },
 
   async created() {
-    const { results } = await fetchMovies(this.$route.query.page);
+    const { results, page, total_pages } = await fetchMovies(this.$route.query.page);
+
     this.setMoviesList(results);
+    this.setPage(page);
+    this.setTotalPages(total_pages);
+  },
+
+  watch: {
+    '$route.query.page'() {
+      this.$router.go();
+    },
   },
 };
 </script>
