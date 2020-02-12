@@ -1,18 +1,55 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>vue movie</h1>
+
+    <ul>
+      <li v-for="(movie, index) in moviesList" :key="index">
+        <img :src="`${imgPath}/${movie.poster_path}`" :alt="movie.original_title">
+        <span><b>{{ movie.original_title }}</b></span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mapState, mapActions } from 'vuex';
+
+import Paginator from '../components/Paginator.vue';
+
+import { fetchMovies } from '../api/api';
 
 export default {
   name: 'home',
+
   components: {
-    HelloWorld,
+    Paginator,
+  },
+
+  data() {
+    return {
+      imgPath: process.env.VUE_APP_IMAGE_API_URL,
+    };
+  },
+
+  computed: {
+    ...mapState(['moviesList']),
+  },
+
+  methods: {
+    ...mapActions([
+      'setMoviesList',
+      'setPage',
+    ]),
+  },
+
+  async created() {
+    const { results } = await fetchMovies(this.$route.query.page);
+    this.setMoviesList(results);
   },
 };
 </script>
+
+<style lang="scss" scoped>
+  .home {
+  }
+</style>
