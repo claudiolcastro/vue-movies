@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     moviesList: null,
-    myMoviesList: [],
+    watchLaterList: [],
     page: 1,
     totalPages: null,
   },
@@ -16,8 +16,8 @@ export default new Vuex.Store({
       state.moviesList = payload;
     },
 
-    SET_MY_MOVIE(state, payload) {
-      state.myMoviesList = [...state.myMoviesList, payload];
+    SET_MOVIE_WATCH_LATER(state, payload) {
+      state.watchLaterList = [...state.watchLaterList, payload];
     },
 
     SET_PAGE(state, payload) {
@@ -34,8 +34,8 @@ export default new Vuex.Store({
       commit('SET_MOVIES_LIST', payload);
     },
 
-    setMyMovie({ commit }, payload) {
-      commit('SET_MY_MOVIE', payload);
+    setMovieWatchLater({ commit }, payload) {
+      commit('SET_MOVIE_WATCH_LATER', payload);
     },
 
     setPage({ commit }, payload) {

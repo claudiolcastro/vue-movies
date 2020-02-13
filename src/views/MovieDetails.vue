@@ -8,6 +8,8 @@
       <p>
         {{ movie.overview }}
       </p>
+
+      <button @click="addMyToMyList">Assistir mais tarde</button>
     </div>
   </main>
 </template>
@@ -28,12 +30,20 @@ export default {
   },
 
   computed: {
-    ...mapState(['moviesList']),
+    ...mapState(['watchLaterList']),
   },
 
   methods: {
     ...mapActions([
+      'setMovieWatchLater',
     ]),
+
+    addMyToMyList() {
+      this.setMovieWatchLater(this.movie);
+      localStorage.setItem('watchLaterList', JSON.stringify(this.watchLaterList));
+    },
+
+    // TODO: fazer regra para remover da watchlater e verificar filme ja adicionado
   },
 
   async created() {
