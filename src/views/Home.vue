@@ -6,10 +6,12 @@
 
     <ul>
       <li v-for="(movie, index) in moviesList" :key="index">
-        <router-link :to="`/movie/${movie.id}`">
-          <img :src="`${imgPath}/${movie.poster_path}`" :alt="movie.title">
-          <span><b>{{ movie.title }}</b></span>
-        </router-link>
+       <MovieCard
+        :id="movie.id"
+        :title="movie.title"
+        :overview="movie.overview"
+        :img="movie.poster_path"
+       />
       </li>
     </ul>
   </main>
@@ -20,12 +22,14 @@ import { mapState, mapActions } from 'vuex';
 
 import { fetchMoviesList } from '../api/api';
 
+import MovieCard from '../components/movies/MovieCard.vue';
 import Paginator from '../components/Paginator.vue';
 
 export default {
   name: 'home',
 
   components: {
+    MovieCard,
     Paginator,
   },
 
