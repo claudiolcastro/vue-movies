@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>Star Wars - Cláudio Luiz Castro</p>
+    <p>Vue Movies - Cláudio Luiz Castro</p>
   </footer>
 </template>
 
