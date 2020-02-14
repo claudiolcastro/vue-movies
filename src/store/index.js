@@ -43,7 +43,7 @@ export default new Vuex.Store({
     },
 
     setMovieWatchLater({ state, commit }, payload) {
-      if (!state.watchLaterList.includes(payload)) {
+      if (!state.watchLaterList.filter(movie => movie.id === payload.id).length) {
         commit('SET_MOVIE_WATCH_LATER', payload);
         localStorage.setItem('watchLaterList', JSON.stringify(state.watchLaterList));
       }

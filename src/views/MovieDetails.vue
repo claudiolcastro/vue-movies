@@ -33,7 +33,7 @@ export default {
     ...mapState(['watchLaterList']),
 
     movieOnWatchLaterList() {
-      return this.watchLaterList.includes(this.movie);
+      return this.watchLaterList.filter(movie => movie.id === this.movie.id).length;
     },
   },
 
