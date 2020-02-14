@@ -20,6 +20,10 @@ export default new Vuex.Store({
       state.watchLaterList = [...state.watchLaterList, payload];
     },
 
+    SET_WATCH_LATER_LIST(state, payload) {
+      state.watchLaterList = payload;
+    },
+
     SET_PAGE(state, payload) {
       state.page = payload;
     },
@@ -34,8 +38,15 @@ export default new Vuex.Store({
       commit('SET_MOVIES_LIST', payload);
     },
 
-    setMovieWatchLater({ commit }, payload) {
-      commit('SET_MOVIE_WATCH_LATER', payload);
+    setWatchLaterList({ commit }, payload) {
+      commit('SET_WATCH_LATER_LIST', payload);
+    },
+
+    setMovieWatchLater({ state, commit }, payload) {
+      if (!state.watchLaterList.includes(payload)) {
+        commit('SET_MOVIE_WATCH_LATER', payload);
+        localStorage.setItem('watchLaterList', JSON.stringify(state.watchLaterList));
+      }
     },
 
     setPage({ commit }, payload) {

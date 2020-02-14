@@ -9,7 +9,7 @@
         {{ movie.overview }}
       </p>
 
-      <button @click="addMyToMyList">Assistir mais tarde</button>
+      <button v-if="!movieOnWatchLaterList" @click="addMyToMyList">Assistir mais tarde</button>
     </div>
   </main>
 </template>
@@ -31,6 +31,10 @@ export default {
 
   computed: {
     ...mapState(['watchLaterList']),
+
+    movieOnWatchLaterList() {
+      return this.watchLaterList.includes(this.movie);
+    },
   },
 
   methods: {
@@ -40,10 +44,7 @@ export default {
 
     addMyToMyList() {
       this.setMovieWatchLater(this.movie);
-      localStorage.setItem('watchLaterList', JSON.stringify(this.watchLaterList));
     },
-
-    // TODO: fazer regra para remover da watchlater e verificar filme ja adicionado
   },
 
   async created() {
