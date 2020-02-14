@@ -9,7 +9,13 @@
         {{ movie.overview }}
       </p>
 
-      <button v-if="!movieOnWatchLaterList" @click="addMyToMyList">Assistir mais tarde</button>
+      <button v-if="!movieOnWatchLaterList" @click="addMyToMyList">
+        Assistir mais tarde
+      </button>
+
+      <button v-if="movieOnWatchLaterList" @click="removeFromMyList">
+        Remover de "Assistir mais tarde"
+      </button>
     </div>
   </main>
 </template>
@@ -40,10 +46,15 @@ export default {
   methods: {
     ...mapActions([
       'setMovieWatchLater',
+      'removeMovieWatchLater',
     ]),
 
     addMyToMyList() {
       this.setMovieWatchLater(this.movie);
+    },
+
+    removeFromMyList() {
+      this.removeMovieWatchLater(this.movie);
     },
   },
 

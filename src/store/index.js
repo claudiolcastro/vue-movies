@@ -1,6 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import updateLocalStorage from '../helpers/localStorage/updateLocalStorage';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -24,6 +26,10 @@ export default new Vuex.Store({
       state.watchLaterList = payload;
     },
 
+    REMOVE_MOVIE_WATCH_LATER(state, payload) {
+      state.watchLaterList.splice(payload, 1);
+    },
+
     SET_PAGE(state, payload) {
       state.page = payload;
     },
@@ -45,8 +51,17 @@ export default new Vuex.Store({
     setMovieWatchLater({ state, commit }, payload) {
       if (!state.watchLaterList.filter(movie => movie.id === payload.id).length) {
         commit('SET_MOVIE_WATCH_LATER', payload);
-        localStorage.setItem('watchLaterList', JSON.stringify(state.watchLaterList));
+
+        updateLocalStorage('watchLaterList', JSON.stringify(state.watchLaterList));
       }
+    },
+
+    removeMovieWatchLater({ state, commit }, payload) {
+      const [movie] = state.watchLaterList.filter(m => m.id === payload.id);
+      const index = state.watchLaterList.indexOf(movie);
+      commit('REMOVE_MOVIE_WATCH_LATER', index);
+
+      updateLocalStorage('watchLaterList', JSON.stringify(state.watchLaterList));
     },
 
     setPage({ commit }, payload) {
