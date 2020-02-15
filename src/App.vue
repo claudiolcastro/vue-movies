@@ -35,7 +35,7 @@ export default {
 
 <style lang="scss">
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans';
   color: $black;
   text-align: center;
 }

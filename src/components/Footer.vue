@@ -12,7 +12,7 @@ export default {
 
 <style lang="scss" scoped>
   footer {
-    background-color: #484848;
+    background-color: $main-color;
     bottom: 0;
     color: $white;
     height: 100px;

@@ -2,3 +2,6 @@
 @mixin media-mobile {
   @media (max-width: 768px){ @content; }
 }
+@mixin media-mobile-s {
+  @media (max-width: 320px){ @content; }
+}
