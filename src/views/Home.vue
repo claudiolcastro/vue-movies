@@ -71,6 +71,7 @@ export default {
 <style lang="scss" scoped>
   .home {
     background-color: $main-color;
+    min-height: 100vh;
 
     ul {
       display: flex;
