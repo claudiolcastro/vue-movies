@@ -5,6 +5,7 @@
        <MovieCard
         :id="movie.id"
         :title="movie.title"
+        :date="movie.release_date"
         :overview="movie.overview"
         :img="movie.poster_path"
        />
@@ -47,5 +48,19 @@ export default {
 
 <style lang="scss" scoped>
   .watch-later {
+    background-color: $main-color;
+    min-height: 100vh;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0 auto 0 auto;
+
+      li {
+        margin: 10px 0 0 10px;
+        @include media-mobile { width: 30%; }
+        @include media-mobile-s { width: 45%; }
+      }
+    }
   }
 </style>
