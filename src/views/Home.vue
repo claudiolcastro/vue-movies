@@ -1,7 +1,5 @@
 <template>
   <main class="home">
-    <h1>vue movies</h1>
-
     <div class="paginator-top">
       <Paginator :total="totalPages" :current="page" />
     </div>
@@ -80,7 +78,9 @@ export default {
 <style lang="scss" scoped>
   .home {
     background-color: $main-color;
+    display: inline-block;
     min-height: 100vh;
+    width: 100%;
 
     .paginator-top {
       display: flex;

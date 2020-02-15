@@ -14,11 +14,11 @@
 
         <button class="btn-add" v-if="!movieOnWatchLaterList" @click="addMyToMyList">
           <span>+</span>
-          Assistir mais tarde
+          Adicionar a minha lista
         </button>
 
         <button class="btn-remove" v-if="movieOnWatchLaterList" @click="removeFromMyList">
-          Remover de "Assistir mais tarde"
+          Remover da minha lista
         </button>
       </div>
     </section>
@@ -100,7 +100,7 @@ export default {
 
     .container {
       display: flex;
-      margin: 80px auto 0 auto;
+      margin: 50px auto 0 auto;
       max-width: 980px;
       @include media-mobile {
         flex-direction: column;
@@ -143,7 +143,7 @@ export default {
           position: relative;
           text-align: end;
           transition: .3s;
-          width: 130px;
+          width: 150px;
           span {
             font-weight: 300;
             font-size: 18px;
@@ -154,7 +154,7 @@ export default {
           }
           &:hover { background-color: #202b36; }
         }
-        .btn-remove { width: 200px; }
+        .btn-remove { width: 140px; }
       }
     }
 
