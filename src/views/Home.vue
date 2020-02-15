@@ -4,17 +4,18 @@
 
     <Paginator :total="totalPages" :current="page" />
 
-    <ul>
-      <li v-for="(movie, index) in moviesList" :key="index">
-       <MovieCard
+    <MovieGrid>
+      <MovieCard
+        class="grid-item"
+        v-for="(movie, index) in moviesList"
+        :key="index"
         :id="movie.id"
         :title="movie.title"
         :date="movie.release_date"
         :overview="movie.overview"
         :img="movie.poster_path"
-       />
-      </li>
-    </ul>
+      />
+    </MovieGrid>
   </main>
 </template>
 
@@ -23,6 +24,7 @@ import { mapState, mapActions } from 'vuex';
 
 import { fetchMoviesList } from '../api/api';
 
+import MovieGrid from '../components/movies/MovieGrid.vue';
 import MovieCard from '../components/movies/MovieCard.vue';
 import Paginator from '../components/Paginator.vue';
 
@@ -30,6 +32,7 @@ export default {
   name: 'home',
 
   components: {
+    MovieGrid,
     MovieCard,
     Paginator,
   },
@@ -72,17 +75,5 @@ export default {
   .home {
     background-color: $main-color;
     min-height: 100vh;
-
-    ul {
-      display: flex;
-      flex-wrap: wrap;
-      margin: 0 auto 0 auto;
-
-      li {
-        margin: 10px 0 0 10px;
-        @include media-mobile { width: 30%; }
-        @include media-mobile-s { width: 45%; }
-      }
-    }
   }
 </style>
