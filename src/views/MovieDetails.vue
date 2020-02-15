@@ -1,6 +1,6 @@
 <template>
   <main class="movie-details">
-    <div v-if="movie" class="container">
+    <section v-if="movie" class="container">
       <div class="movie-poster">
         <img :src="`${imgPath}/${movie.poster_path}`" :alt="movie.title">
       </div>
@@ -22,12 +22,20 @@
           Remover de "Assistir mais tarde"
         </button>
       </div>
+    </section>
 
-    </div>
+    <section v-if="trailerId" class="movie-trailer">
+      <h2 class="trailers">Trailers</h2>
+
+      <div class="video-box">
+        <iframe width='100%' height='400px' :src="trailerUrl"></iframe>
+      </div>
+    </section>
   </main>
 </template>
 
 <script>
+import YouTubeSearch from 'youtube-api-search';
 import { mapState, mapActions } from 'vuex';
 
 import { fetchMovie } from '../api/api';
@@ -38,6 +46,7 @@ export default {
   data() {
     return {
       movie: null,
+      trailerId: null,
       imgPath: process.env.VUE_APP_IMAGE_API_URL,
     };
   },
@@ -47,6 +56,10 @@ export default {
 
     movieOnWatchLaterList() {
       return this.watchLaterList.filter(movie => movie.id === this.movie.id).length;
+    },
+
+    trailerUrl() {
+      return `https://www.youtube.com/embed/${this.trailerId}`;
     },
   },
 
@@ -68,6 +81,12 @@ export default {
   async created() {
     const result = await fetchMovie(this.$route.params.id);
     this.movie = result;
+
+    const term = `${this.movie.title} trailer`;
+
+    YouTubeSearch({ key: process.env.VUE_APP_GOOGLE_API_TOKEN, term }, (videos) => {
+      this.trailerId = videos[0].id.videoId;
+    });
   },
 };
 </script>
@@ -137,6 +156,30 @@ export default {
           &:hover { background-color: #202b36; }
         }
         .btn-remove { width: 200px; }
+      }
+    }
+
+    .movie-trailer {
+      margin-top: 45px;
+
+      h2.trailers {
+        font-size: 22px;
+        font-weight: 300;
+        margin: 0 auto;
+        text-align: start;
+        border-bottom: 1px solid;
+        padding: 14px;
+        max-width: 980px;
+      }
+
+      .video-box {
+        max-width: 768px;
+        margin: 50px auto 0 auto;
+
+        @include media-mobile {
+          padding: 0 15px;
+          iframe { height: auto; }
+        }
       }
     }
   }

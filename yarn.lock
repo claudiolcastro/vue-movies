@@ -1402,6 +1402,10 @@ axios@^0.19.2:
   dependencies:
     follow-redirects "1.5.10"
 
+axios@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.7.0.tgz#489c269044d5066dfa2c64c749cb131b176f4a7a"
+
 babel-code-frame@^6.22.0, babel-code-frame@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-code-frame/-/babel-code-frame-6.26.0.tgz#63fd43f7dc1e3bb7ce35947db8fe369a3f58c74b"
@@ -9377,3 +9381,9 @@ yorkie@^2.0.0:
     is-ci "^1.0.10"
     normalize-path "^1.0.0"
     strip-indent "^2.0.0"
+
+youtube-api-search@^0.0.5:
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/youtube-api-search/-/youtube-api-search-0.0.5.tgz#9dd686de762ff2504a90288c57fce5a370643002"
+  dependencies:
+    axios "^0.7.0"
