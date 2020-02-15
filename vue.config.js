@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: 'vue-movies',
+  // publicPath: 'vue-movies',
   css: {
     loaderOptions: {
       sass: {

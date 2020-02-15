@@ -18,6 +18,7 @@
         </button>
 
         <button class="btn-remove" v-if="movieOnWatchLaterList" @click="removeFromMyList">
+          <span>x</span>
           Remover da minha lista
         </button>
       </div>
@@ -139,11 +140,11 @@ export default {
           cursor: pointer;
           display: block;
           margin-top: 20px;
-          padding: 6px;
+          padding: 6px 6px 6px 25px;
           position: relative;
           text-align: end;
           transition: .3s;
-          width: 150px;
+          width: fit-content;
           span {
             font-weight: 300;
             font-size: 18px;
@@ -154,7 +155,6 @@ export default {
           }
           &:hover { background-color: #202b36; }
         }
-        .btn-remove { width: 140px; }
       }
     }
 

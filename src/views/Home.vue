@@ -86,7 +86,7 @@ export default {
       display: flex;
       justify-content: flex-end;
       max-width: 1335px;
-      margin: 15px;
+      margin: 15px auto;
       @include media-mobile {
         display: none;
       }
