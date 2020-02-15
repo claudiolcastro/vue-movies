@@ -2,7 +2,9 @@
   <main class="home">
     <h1>vue movies</h1>
 
-    <Paginator :total="totalPages" :current="page" />
+    <div class="paginator-top">
+      <Paginator :total="totalPages" :current="page" />
+    </div>
 
     <MovieGrid>
       <MovieCard
@@ -16,6 +18,10 @@
         :img="movie.poster_path"
       />
     </MovieGrid>
+
+    <div class="paginator-bottom">
+      <Paginator :total="totalPages" :current="page" />
+    </div>
   </main>
 </template>
 
@@ -75,5 +81,21 @@ export default {
   .home {
     background-color: $main-color;
     min-height: 100vh;
+
+    .paginator-top {
+      display: flex;
+      justify-content: flex-end;
+      max-width: 1335px;
+      margin: 15px;
+      @include media-mobile {
+        display: none;
+      }
+    }
+
+    .paginator-bottom {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+    }
   }
 </style>

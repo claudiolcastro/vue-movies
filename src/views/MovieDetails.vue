@@ -18,7 +18,6 @@
         </button>
 
         <button class="btn-remove" v-if="movieOnWatchLaterList" @click="removeFromMyList">
-          <span>-</span>
           Remover de "Assistir mais tarde"
         </button>
       </div>
@@ -135,7 +134,7 @@ export default {
 
         .btn-add, .btn-remove {
           background-color: $main-color;
-          border: 1px solid #202b36;
+          border: 1px solid $main-color-light;
           color: #fff;
           cursor: pointer;
           display: block;

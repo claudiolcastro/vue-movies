@@ -4,7 +4,7 @@
       class="prev"
       :to="previous"
       :class="{off: current === 1}"
-    >previous</router-link>
+    >Anterior</router-link>
 
     <ul class="selectable-pages">
       <li
@@ -23,7 +23,7 @@
       class="next"
       :to="next"
       :class="{off: current === total}"
-    >next</router-link>
+    >Próximo</router-link>
   </div>
 </template>
 
@@ -87,4 +87,36 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.paginator {
+  display: inline-block;
+
+  .selectable-pages {
+    display: inline-block;
+    margin: 0 10px 0 0;
+
+    li.pg-item {
+      border: 1px solid $main-color-light;
+      border-radius: 3px;
+      display: inline-block;
+      padding: 5px 8px;
+      margin-left: 10px;
+      transition: .3s;
+      &:hover { background-color: $main-color-light; }
+      a { color: $white; }
+
+      &.active { background-color: $main-color-light; }
+    }
+  }
+
+  .prev, .next {
+    border: 1px solid $main-color-light;
+    border-radius: 7px;
+    color: $white;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 5px;
+    transition: .3s;
+    &:hover { background-color: $main-color-light; }
+  }
+}
 </style>
