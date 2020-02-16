@@ -24,3 +24,10 @@ O projeto ficará disponivel em: https://localhost:8080
 
 
  Projeto também disponível em: https://claudiolcastro.github.io/vue-movies/#/
+
+
+
+#### TODO _(improvements)_
+ - Salvar primeira página de resultados da home no localStorage
+ - Melhorias de UX/UI
+ - Testes unitários 
