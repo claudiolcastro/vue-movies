@@ -30,6 +30,10 @@ export default new Vuex.Store({
       state.watchLaterList.splice(payload, 1);
     },
 
+    MARK_WATCHED(state, payload) {
+      state.watchLaterList[payload].watched = true;
+    },
+
     SET_PAGE(state, payload) {
       state.page = payload;
     },
@@ -60,6 +64,14 @@ export default new Vuex.Store({
       const [movie] = state.watchLaterList.filter(m => m.id === payload.id);
       const index = state.watchLaterList.indexOf(movie);
       commit('REMOVE_MOVIE_WATCH_LATER', index);
+
+      updateLocalStorage('watchLaterList', JSON.stringify(state.watchLaterList));
+    },
+
+    markWatched({ state, commit }, payload) {
+      const [movie] = state.watchLaterList.filter(m => m.id === payload.id);
+      const index = state.watchLaterList.indexOf(movie);
+      commit('MARK_WATCHED', index);
 
       updateLocalStorage('watchLaterList', JSON.stringify(state.watchLaterList));
     },

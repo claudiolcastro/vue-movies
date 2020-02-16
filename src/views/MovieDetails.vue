@@ -41,7 +41,7 @@ import { mapState, mapActions } from 'vuex';
 import { fetchMovie } from '../api/api';
 
 export default {
-  name: 'movie-details',
+  name: 'MovieDetails',
 
   data() {
     return {

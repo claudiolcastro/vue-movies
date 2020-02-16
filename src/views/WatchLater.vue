@@ -3,16 +3,18 @@
     <div class="container">
       <h1>Minha Lista</h1>
       <MovieGrid>
-        <MovieCard
-          class="grid-item"
-          v-for="(movie, index) in watchLaterList"
-          :key="index"
-          :id="movie.id"
-          :title="movie.title"
-          :date="movie.release_date"
-          :overview="movie.overview"
-          :img="movie.poster_path"
-        />
+        <div class="grid-item" v-for="(movie, index) in watchLaterList" :key="index">
+           <MovieCard
+            :id="movie.id"
+            :title="movie.title"
+            :date="movie.release_date"
+            :overview="movie.overview"
+            :img="movie.poster_path"
+          />
+          <button v-show="!watched(movie)" class="watched-btn" @click="markFilm(movie)">
+            Marcar como assistido
+          </button>
+        </div>
       </MovieGrid>
     </div>
   </main>
@@ -25,7 +27,7 @@ import MovieGrid from '../components/movies/MovieGrid.vue';
 import MovieCard from '../components/movies/MovieCard.vue';
 
 export default {
-  name: 'watch-later',
+  name: 'WatchLater',
 
   components: {
     MovieGrid,
@@ -44,7 +46,17 @@ export default {
 
   methods: {
     ...mapActions([
+      'markWatched',
     ]),
+
+    watched(movie) {
+      return movie.watched;
+    },
+
+    markFilm(movie) {
+      this.markWatched(movie);
+      this.$forceUpdate();
+    },
   },
 
   created() {
@@ -71,6 +83,16 @@ export default {
         padding-left: 20px;
         text-align: start;
         @include media-mobile { padding-left: 10px; }
+      }
+
+      .watched-btn {
+        background-color: $main-color;
+        border: 1px solid $main-color-light;
+        border-radius: 5px;
+        color: $white;
+        cursor: pointer;
+        transition: .3s;
+        &:hover { background-color: #202b36; }
       }
     }
   }

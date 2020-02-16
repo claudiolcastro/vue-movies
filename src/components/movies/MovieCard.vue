@@ -13,7 +13,7 @@
 import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: 'movie-card',
+  name: 'MovieCard',
 
   props: {
     id: {

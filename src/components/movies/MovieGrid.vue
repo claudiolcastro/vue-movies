@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'movie-grid',
+  name: 'MovieGrid',
 };
 </script>
 

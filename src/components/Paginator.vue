@@ -33,16 +33,7 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Paginator',
 
-  props: {
-    total: {
-      type: Number,
-      required: true,
-    },
-    current: {
-      type: Number,
-      required: true,
-    },
-  },
+  props: ['total', 'current'],
 
   computed: {
     selectablePages() {

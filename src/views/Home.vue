@@ -33,7 +33,7 @@ import MovieCard from '../components/movies/MovieCard.vue';
 import Paginator from '../components/Paginator.vue';
 
 export default {
-  name: 'home',
+  name: 'Home',
 
   components: {
     MovieGrid,
