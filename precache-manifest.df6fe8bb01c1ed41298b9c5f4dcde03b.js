@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/vue-movies/js/chunk-vendors.da7c77fb.js"
   },
   {
-    "revision": "d461c186f259889ce09d",
-    "url": "/vue-movies/js/app.a3eb5c66.js"
+    "revision": "208d5e13560f202c4de8",
+    "url": "/vue-movies/js/app.31a344e5.js"
   },
   {
-    "revision": "ee6b2c21623554c0fc51334792d3fd32",
+    "revision": "23f6479b9704da690a73d027a85cf464",
     "url": "/vue-movies/index.html"
   },
   {
-    "revision": "d461c186f259889ce09d",
-    "url": "/vue-movies/css/app.f87f27a2.css"
+    "revision": "208d5e13560f202c4de8",
+    "url": "/vue-movies/css/app.760384de.css"
   }
 ];
