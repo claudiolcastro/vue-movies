@@ -13,8 +13,14 @@ yarn run dev
 O projeto ficará disponivel em: https://localhost:8080
 
 
-### Para rodar os testes unitarios
-Rode:
-```
-yarn run test:unit
-```
+
+
+### Features
+
+ - Lista filmes populares na página inicial
+ - Exibe Detalhes e Trailers do filme
+ - Adiciona filme a "Minha lista" e salva lista no navegador (local-storage)
+ - Marcar filme como "Assistido"
+
+
+ Projeto também disponível em: https://claudiolcastro.github.io/vue-movies/#/

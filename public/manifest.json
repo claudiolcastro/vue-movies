@@ -1,6 +1,6 @@
 {
-  "name": "vue-movies",
-  "short_name": "vue-movies",
+  "name": "Vue Movies",
+  "short_name": "Vue Movies",
   "icons": [
     {
       "src": "./img/icons/movie-icon.png",
