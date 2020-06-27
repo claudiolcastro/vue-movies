@@ -12,8 +12,11 @@ yarn run dev
 ```
 O projeto ficará disponivel em: https://localhost:8080
 
+### home
+<p align="center"><img src=".github/home.png?raw=true"/></p>
 
-
+### details
+<p align="center"><img src=".github/details.png?raw=true"/></p>
 
 ### Features
 
